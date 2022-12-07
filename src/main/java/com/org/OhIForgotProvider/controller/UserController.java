@@ -1,25 +1,73 @@
 package com.org.OhIForgotProvider.controller;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.org.OhIForgotProvider.respository.UserRepository;
+import com.org.OhIForgotProvider.model.User;
+import com.org.OhIForgotProvider.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:8081")
-@RestController
 @RequestMapping("/api")
+@RestController
 public class UserController {
 
-	private UserRepository userDao;
+	@Autowired
+	private UserService userService;
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
-		this.userDao = userDao;
-		this.passwordEncoder = passwordEncoder;
+	
+	 @GetMapping("/profile/{id}")
+	    public ResponseEntity<User> getUser(@PathVariable("id") long id) {
+	        System.out.println("Fetching User with id " + id);
+	        User user = userService.findById(id);
+	        if (user == null) {
+	            System.out.println("User with id " + id + " not found");
+	            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+	        }
+	        return new ResponseEntity<User>(user, HttpStatus.OK);
+	    }
+	
+	@PutMapping("profile/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user){
+		System.out.println("Updating user " + id);
+		
+	User currentUser = userService.findById(id);
+		
+		if(currentUser == null) {
+			System.out.println("User with id " + id + " not found");
+			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+		}
+		currentUser.setUsername(user.getUsername());
+		currentUser.setEmail(user.getEmail());
+		currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		
+		userService.saveUser(currentUser);
+		return new ResponseEntity<User> (currentUser, HttpStatus.OK);
 	}
 	
+	@DeleteMapping("profile/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
+        System.out.println("Fetching & Deleting User with id " + id);
+ 
+        User user = userService.findById(id);
+        if (user == null) {
+            System.out.println("Unable to delete. User with id " + id + " not found");
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+ 
+        userService.deleteUser(id);
+        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+    }
 	
 	
 }

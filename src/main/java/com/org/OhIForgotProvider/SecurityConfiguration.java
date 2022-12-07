@@ -2,6 +2,7 @@ package com.org.OhIForgotProvider;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,6 +24,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    public PasswordEncoder passwordEncoder(){
 	        return new BCryptPasswordEncoder();
 	    }
+	 
+	 
+	 
 	 @Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	        auth
@@ -30,10 +34,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	                .passwordEncoder(passwordEncoder()) //How to encode and verify passwords
 	                ;
 	    }
+	 
+	 @Bean
+	  @Override
+	  public AuthenticationManager authenticationManagerBean() throws Exception {
+	    return super.authenticationManagerBean();
+	  }
 
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception{
 	        http
+	        
 	            /* Login Configuration*/
 	            .formLogin()
 	                .loginPage("/login")
@@ -46,18 +57,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	            /* Pages that can be view without having to log in */
 	            .and()
 	                .authorizeRequests()
-	                .antMatchers("/api/**") //anyone can see the home and the tasks page
+	                .antMatchers("/console", "/signup", "/" ) //anyone can see the home and the tasks page
 	                .permitAll()
 	            /* Pages that require authentication */
 	            .and()
 	                .authorizeRequests()
 	                .antMatchers(
-	                        "/tasks", // only authenticated users can create tasks
-	                        "/tasks/{id}", // only authenticated users can edit tasks
-	                        "/profile/{id}" // only authenticated users can edit user
+	                		 "/tasks/{id}", // only authenticated users can edit tasks
+	                		 "/profile/{id}", // only authenticated users can edit user profile
+	                         "/tasks" // only authenticated users can create tasks
+	                          
 	                )
-	                .authenticated()
-	        ;
+	                .authenticated();
+	        http.csrf().disable();
+	        http.headers().frameOptions().sameOrigin();
 	    }
 
 	    

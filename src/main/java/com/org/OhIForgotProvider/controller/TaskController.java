@@ -1,12 +1,11 @@
 package com.org.OhIForgotProvider.controller;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,26 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.org.OhIForgotProvider.model.Task;
 import com.org.OhIForgotProvider.model.User;
-import com.org.OhIForgotProvider.respository.TaskRepository;
-import com.org.OhIForgotProvider.respository.UserRepository;
+import com.org.OhIForgotProvider.service.TaskService;
 
-@CrossOrigin(origins = "http://localhost:8081")
-@RestController
 @RequestMapping("/api")
+@RestController
 public class TaskController {
 
-	private final TaskRepository taskDao;
+	@Autowired
+	 private TaskService taskService;
    
 	
-    public TaskController(TaskRepository taskDao) {
-    	this.taskDao = taskDao;
-    	
-    }
     
     //list of tasks
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> listTasks(){
-    	List<Task> tasks = taskDao.findAll();
+    	List<Task> tasks = taskService.listTasks();
     	
     	if(tasks.isEmpty()) {
     		return new ResponseEntity<List<Task>>(HttpStatus.NO_CONTENT);
@@ -51,7 +45,7 @@ public class TaskController {
     	
     	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         task.setUser(user);
-        taskDao.save(task);
+        taskService.saveTask(task);
 		return new ResponseEntity<Task>(task, HttpStatus.OK);
 	}
     
@@ -60,7 +54,7 @@ public class TaskController {
   	public ResponseEntity<Task> updateTask(@PathVariable("id") long id, @RequestBody Task task) {
   		System.out.println("Updating task " + id);
 
-  	  Task currentTask = taskDao.getById(id);
+  	  Task currentTask = taskService.findTaskById(id);
 
   		if (currentTask == null) {
   			System.out.println("Task with id " + id + " not found");
@@ -71,7 +65,7 @@ public class TaskController {
   		currentTask.setDueDate(task.getDueDate());
   		
 
-  		taskDao.save(currentTask);
+  		taskService.updateTask(currentTask);
   		return new ResponseEntity<Task>(currentTask, HttpStatus.OK);
   	}
   	
@@ -81,13 +75,13 @@ public class TaskController {
   	public ResponseEntity<Task> deleteTask(@PathVariable("id") long id) {
           System.out.println("Retrieving & Deleting Task with id " + id);
     
-          Task task = taskDao.getById(id);
+          Task task = taskService.findTaskById(id);
           if (task == null) {
               System.out.println("Unable to delete. Task with id " + id + " not found");
               return new ResponseEntity<Task>(HttpStatus.NOT_FOUND);
           }
     
-          taskDao.deleteById(id);
+          taskService.deleteTask(id);
           return new ResponseEntity<Task>(HttpStatus.NO_CONTENT);
       }
     
