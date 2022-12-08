@@ -4,10 +4,12 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name ="tasks")
 public class Task {

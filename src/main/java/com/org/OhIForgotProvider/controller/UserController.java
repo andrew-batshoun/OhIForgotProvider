@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.org.OhIForgotProvider.model.User;
 import com.org.OhIForgotProvider.service.UserService;
 
+@CrossOrigin(origins ="http://localhost:8081")
 @RequestMapping("/api")
 @RestController
 public class UserController {
@@ -25,7 +27,7 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	
+	//gets user by id
 	 @GetMapping("/profile/{id}")
 	    public ResponseEntity<User> getUser(@PathVariable("id") long id) {
 	        System.out.println("Fetching User with id " + id);
@@ -37,6 +39,7 @@ public class UserController {
 	        return new ResponseEntity<User>(user, HttpStatus.OK);
 	    }
 	
+	 //updates user profile
 	@PutMapping("profile/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user){
 		System.out.println("Updating user " + id);
@@ -49,12 +52,14 @@ public class UserController {
 		}
 		currentUser.setUsername(user.getUsername());
 		currentUser.setEmail(user.getEmail());
+//		currentUser.setPassword(user.getPassword());
 		currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		userService.saveUser(currentUser);
 		return new ResponseEntity<User> (currentUser, HttpStatus.OK);
 	}
 	
+	//deletes user
 	@DeleteMapping("profile/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
         System.out.println("Fetching & Deleting User with id " + id);

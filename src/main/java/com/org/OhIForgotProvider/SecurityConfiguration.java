@@ -2,10 +2,9 @@ package com.org.OhIForgotProvider;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -57,12 +56,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	            /* Pages that can be view without having to log in */
 	            .and()
 	                .authorizeRequests()
-	                .antMatchers("/console", "/signup", "/" ) //anyone can see the home and the tasks page
+	                .antMatchers("/console", "/signup", "/" ) //anyone can see the home 
 	                .permitAll()
 	            /* Pages that require authentication */
 	            .and()
 	                .authorizeRequests()
 	                .antMatchers(
+	                		
 	                		 "/tasks/{id}", // only authenticated users can edit tasks
 	                		 "/profile/{id}", // only authenticated users can edit user profile
 	                         "/tasks" // only authenticated users can create tasks
@@ -72,6 +72,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	        http.csrf().disable();
 	        http.headers().frameOptions().sameOrigin();
 	    }
-
-	    
+//
+//	    
 }
