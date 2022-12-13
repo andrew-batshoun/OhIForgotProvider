@@ -4,7 +4,7 @@ package com.org.OhIForgotProvider.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +24,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 
 	//gets user by id
 	 @GetMapping("/profile/{id}")
@@ -52,8 +52,8 @@ public class UserController {
 		}
 		currentUser.setUsername(user.getUsername());
 		currentUser.setEmail(user.getEmail());
-//		currentUser.setPassword(user.getPassword());
-		currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		currentUser.setPassword(user.getPassword());
+//		currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		userService.saveUser(currentUser);
 		return new ResponseEntity<User> (currentUser, HttpStatus.OK);

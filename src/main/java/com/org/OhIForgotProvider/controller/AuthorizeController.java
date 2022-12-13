@@ -1,18 +1,20 @@
 package com.org.OhIForgotProvider.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.org.OhIForgotProvider.model.LoginDTO;
 import com.org.OhIForgotProvider.model.User;
 import com.org.OhIForgotProvider.respository.UserRepository;
 
@@ -21,24 +23,56 @@ import com.org.OhIForgotProvider.respository.UserRepository;
 @RestController
 public class AuthorizeController {
 
-	 private AuthenticationManager authenticationManager;
+	@Autowired
 	private UserRepository userDao;
-	 private PasswordEncoder passwordEncoder;
 
-	public AuthorizeController(UserRepository userDao, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
-		this.userDao = userDao;
-		this.passwordEncoder = passwordEncoder;
-		this.authenticationManager = authenticationManager;
-	}
 
+
+	
+
+	
+	//login creates dto to verify user
 	@PostMapping("/login")
-    public ResponseEntity<String> authenticateUser(@RequestBody User user){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                user.getUsername(), user.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);
-    }
+	public ResponseEntity<User> loginUser( @RequestBody LoginDTO ld) {
+		
+		System.out.println(ld.getUsername());
+		
+		if(userDao.existsByUsername(ld.getUsername())){
+			
+			User current = userDao.findByUsername(ld.getUsername());
+			
+			System.out.println(current.getPassword());
+			
+			if(current.getPassword().equals(ld.getPassword())) {
+				
+				
+				return new ResponseEntity<User>(current, HttpStatus.OK );
+			}else {
+				
+				return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+			}
+		}else {
+			
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+			
+		}
+	
+	
+//	@PostMapping("/login")
+//    public ResponseEntity<User> authenticateUser(@RequestBody User user){
+////        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+////                user.getUsername(), user.getPassword()));
+//
+////        SecurityContextHolder.getContext().setAuthentication(authentication);
+//		
+//		User currentUser = userDao.findByUsername(user.getUsername());
+//		if(currentUser == null || currentUser.getPassword() != user.getPassword()) {
+//			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//		}
+//		
+//        return new ResponseEntity<User>(currentUser, HttpStatus.OK);
+//    }
 
 	//adds user
 	@PostMapping("/signup")
@@ -58,9 +92,9 @@ public class AuthorizeController {
 		User newUser = new User();
 		newUser.setUsername(user.getUsername());
 		newUser.setEmail(user.getEmail());
-//		newUser.setPassword(user.getPassword());
-        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-
+		newUser.setPassword(user.getPassword());
+//        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		
 		userDao.save(user);
 
 		return new ResponseEntity<User>(newUser, HttpStatus.OK);

@@ -45,8 +45,8 @@ public class TaskController {
     @PostMapping("/tasks")
 	public ResponseEntity<Task> saveTask(@RequestBody Task task){
     	
-    	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        task.setUser(user);
+//    	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        task.setUser(user);
         taskService.saveTask(task);
 		return new ResponseEntity<Task>(task, HttpStatus.OK);
 	}
