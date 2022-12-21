@@ -15,20 +15,25 @@ public class TaskServiceImpl implements TaskService {
 	private TaskRepository taskDao;
 	
 	@Override
-	public Task findTaskById(Long id) {
+	public Task getTaskById(Long id) {
+		Task task = taskDao.getById(id);
+		if(task.getId() == id) {
+			return task; 
+		}else {
+			return null; 
+		}
 		
-		return taskDao.getById(id);
 	}
 
 	@Override
-	public void saveTask(Task task) {
-		taskDao.save(task);
+	public Task saveTask(Task task) {
+		 return taskDao.save(task);
 		
 	}
 
 	@Override
-	public void updateTask(Task task) {
-		taskDao.save(task);
+	public Task updateTask(Long id, Task task) {
+		return taskDao.save(task);
 		
 	}
 
