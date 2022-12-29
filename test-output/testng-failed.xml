@@ -3,17 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.org.OhIForgotProvider.service.TaskServiceTest">
+      <class name="com.org.OhIForgotProvider.web.UserTest">
         <methods>
-          <include name="springTestContextBeforeTestClass"/>
-          <include name="springTestContextBeforeTestMethod"/>
-          <include name="springTestContextPrepareTestInstance"/>
-          <include name="springTestContextAfterTestClass"/>
-          <include name="when_Given_Id_Does_Not_Exist"/>
-          <include name="init"/>
-          <include name="springTestContextAfterTestMethod"/>
+          <include name="cleanUp"/>
+          <include name="login_User"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- com.org.OhIForgotProvider.service.TaskServiceTest -->
+      </class> <!-- com.org.OhIForgotProvider.web.UserTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
