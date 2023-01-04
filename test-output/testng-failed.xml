@@ -6,8 +6,8 @@
       <class name="com.org.OhIForgotProvider.web.UserTest">
         <methods>
           <include name="cleanUp"/>
-          <include name="login_User"/>
           <include name="setup"/>
+          <include name="register_User"/>
         </methods>
       </class> <!-- com.org.OhIForgotProvider.web.UserTest -->
     </classes>

@@ -49,11 +49,11 @@ public class AuthorizeController {
 				return new ResponseEntity<User>(current, HttpStatus.OK );
 			}else {
 				
-				return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+				return new ResponseEntity<>( HttpStatus.NOT_FOUND);
 			}
 		}else {
 			
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 			
 		}

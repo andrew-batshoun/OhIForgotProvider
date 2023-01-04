@@ -29,7 +29,7 @@ public class UserServiceTest  extends AbstractTestNGSpringContextTests{
 	@InjectMocks
 	UserServiceImpl userService; 
 	
-	@BeforeMethod
+	@BeforeMethod 
 	public void init() {
 		MockitoAnnotations.openMocks(this);
 	}
