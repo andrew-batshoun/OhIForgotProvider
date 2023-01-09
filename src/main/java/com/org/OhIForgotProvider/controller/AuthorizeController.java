@@ -26,39 +26,31 @@ public class AuthorizeController {
 	@Autowired
 	private UserRepository userDao;
 
-
-
-	
-
-	
-	//login creates dto to verify user
+	// login creates dto to verify user
 	@PostMapping("/login")
-	public ResponseEntity<User> loginUser( @RequestBody LoginDTO ld) {
-		
+	public ResponseEntity<User> loginUser(@RequestBody LoginDTO ld) {
+
 		System.out.println(ld.getUsername());
-		
-		if(userDao.existsByUsername(ld.getUsername())){
-			
+
+		if (userDao.existsByUsername(ld.getUsername())) {
+
 			User current = userDao.findByUsername(ld.getUsername());
-			
+
 			System.out.println(current.getPassword());
-			
-			if(current.getPassword().equals(ld.getPassword())) {
-				
-				
-				return new ResponseEntity<User>(current, HttpStatus.OK );
-			}else {
-				
-				return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+
+			if (current.getPassword().equals(ld.getPassword())) {
+
+				return new ResponseEntity<User>(current, HttpStatus.OK);
+			} else {
+
+				return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 			}
-		}else {
-			
+		} else {
+
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-			
-		}
-	
-	
+	}
+
 //	@PostMapping("/login")
 //    public ResponseEntity<User> authenticateUser(@RequestBody User user){
 ////        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -74,7 +66,7 @@ public class AuthorizeController {
 //        return new ResponseEntity<User>(currentUser, HttpStatus.OK);
 //    }
 
-	//adds user
+	// adds user
 	@PostMapping("/signup")
 	public ResponseEntity<User> registerUser(@RequestBody User user) {
 
@@ -94,7 +86,7 @@ public class AuthorizeController {
 		newUser.setEmail(user.getEmail());
 		newUser.setPassword(user.getPassword());
 //        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-		
+
 		userDao.save(user);
 
 		return new ResponseEntity<User>(newUser, HttpStatus.OK);

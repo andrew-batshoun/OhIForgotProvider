@@ -1,6 +1,7 @@
 package com.org.OhIForgotProvider.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,13 +17,7 @@ public class TaskServiceImpl implements TaskService {
 	
 	@Override
 	public Task getTaskById(Long id) {
-		Task task = taskDao.getById(id);
-		if(task.getId() == id) {
-			return task; 
-		}else {
-			return null; 
-		}
-		
+		return taskDao.getById(id);
 	}
 
 	@Override
@@ -39,6 +34,7 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public void deleteTask(Long id) {
+		
 		taskDao.deleteById(id);
 	}
 
