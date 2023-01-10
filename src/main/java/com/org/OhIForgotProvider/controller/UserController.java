@@ -27,7 +27,7 @@ public class UserController {
 //	@Autowired
 //	private PasswordEncoder passwordEncoder;
 
-	//gets user by id
+	//gets user by id NOT USED
 	 @GetMapping("/profile/{id}")
 	    public ResponseEntity<User> getUser(@PathVariable("id") long id) {
 	        System.out.println("Fetching User with id " + id);
@@ -39,7 +39,7 @@ public class UserController {
 	        return new ResponseEntity<User>(user, HttpStatus.OK);
 	    }
 	
-	 //updates user profile
+	 //updates user profile NOT USED
 	@PutMapping("profile/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user){
 		System.out.println("Updating user " + id);
@@ -55,11 +55,11 @@ public class UserController {
 		currentUser.setPassword(user.getPassword());
 //		currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
 		
-		userService.saveUser(currentUser);
+		userService.updateUser(id, currentUser);
 		return new ResponseEntity<User> (currentUser, HttpStatus.OK);
 	}
 	
-	//deletes user
+	//deletes user NOT USED
 	@DeleteMapping("profile/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
         System.out.println("Fetching & Deleting User with id " + id);
