@@ -42,67 +42,67 @@ public class UserTest {
 		
     }
 	
-//	@Test (priority=1)
-//	public void register_User() {
-//		driver.get("http://localhost:8081/signup");
-//		
-//		WebElement username = driver.findElement(By.id("username"));
-//		WebElement email = driver.findElement(By.id("email"));
-//		WebElement password = driver.findElement(By.id("password"));
-//		WebElement submit = driver.findElement(By.id("submitUser")); 
-//		
-//		username.sendKeys("user");
-//		email.sendKeys("user@email.com");
-//		password.sendKeys("abc123");
-//		
-//		submit.click();
-//		
-//		 new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.urlToBe("http://localhost:8081/login"));
-//		 
-//
-//		assertEquals(driver.getCurrentUrl(), "http://localhost:8081/login");
-//		
-//	} 
-//	
-//	@Test (priority=2)
-//	public void login_User() {
-//		driver.get("http://localhost:8081/login");
-//		WebElement username = driver.findElement(By.id("username"));
-//		WebElement password = driver.findElement(By.id("password"));
-//		WebElement submit = driver.findElement(By.id("submitLogin"));
-//		
-//		username.sendKeys("user");
-//		password.sendKeys("abc123");
-//		
-//		submit.click();
-//		
-//		new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.urlToBe("http://localhost:8081/tasks"));
-//		
-//		String currentUrl = driver.getCurrentUrl();
-//		
-//		assertEquals(currentUrl, "http://localhost:8081/tasks");
-//	}
-//	
-//		@Test(priority = 3)
-//		public void whenAddingUser_UsernameIsBlank_validationError() {
-//
-//			driver.get("http://localhost:8081/signup");
-//			WebElement username = driver.findElement(By.id("username"));
-//			WebElement email = driver.findElement(By.id("email"));
-//			WebElement password = driver.findElement(By.id("password"));
-//			WebElement submit = driver.findElement(By.id("submitUser"));
-//			
-//			username.sendKeys("");
-//			email.sendKeys("user@email.com");
-//			password.sendKeys("abc123");
-//			
-//			submit.click();
-//			
-//			
-//			
-//			assertEquals(username.getAttribute("validationMessage"), "Please fill out this field." );
-//
-//		}
+	@Test (priority=1)
+	public void register_User() {
+		driver.get("http://localhost:8081/signup");
+		
+		WebElement username = driver.findElement(By.id("username"));
+		WebElement email = driver.findElement(By.id("email"));
+		WebElement password = driver.findElement(By.id("password"));
+		WebElement submit = driver.findElement(By.id("submitUser")); 
+		
+		username.sendKeys("user");
+		email.sendKeys("user@email.com");
+		password.sendKeys("abc123");
+		
+		submit.click();
+		
+		 new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.urlToBe("http://localhost:8081/login"));
+		 
+
+		assertEquals(driver.getCurrentUrl(), "http://localhost:8081/login");
+		
+	} 
+	
+	@Test (priority=2)
+	public void login_User() {
+		driver.get("http://localhost:8081/login");
+		WebElement username = driver.findElement(By.id("username"));
+		WebElement password = driver.findElement(By.id("password"));
+		WebElement submit = driver.findElement(By.id("submitLogin"));
+		
+		username.sendKeys("user");
+		password.sendKeys("abc123");
+		
+		submit.click();
+		
+		new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.urlToBe("http://localhost:8081/tasks"));
+		
+		String currentUrl = driver.getCurrentUrl();
+		
+		assertEquals(currentUrl, "http://localhost:8081/tasks");
+	}
+	
+		@Test(priority = 3)
+		public void whenAddingUser_UsernameIsBlank_validationError() {
+
+			driver.get("http://localhost:8081/signup");
+			WebElement username = driver.findElement(By.id("username"));
+			WebElement email = driver.findElement(By.id("email"));
+			WebElement password = driver.findElement(By.id("password"));
+			WebElement submit = driver.findElement(By.id("submitUser"));
+			
+			username.sendKeys("");
+			email.sendKeys("user@email.com");
+			password.sendKeys("abc123");
+			
+			submit.click();
+			
+			
+			
+			assertEquals(username.getAttribute("validationMessage"), "Please fill out this field." );
+
+		}
 		
 		@Test (priority= 4)
 		public void whenLoginUserInvalid_URL_RedirectsToLogin() {
@@ -116,7 +116,7 @@ public class UserTest {
 			
 			submit.click();
 			
-//			new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.urlToBe("http://localhost:8081/login"));
+			new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.urlToBe("http://localhost:8081/login"));
 			
 			String currentUrl = driver.getCurrentUrl();
 			

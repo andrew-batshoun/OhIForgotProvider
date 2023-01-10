@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse--147584844\testng-customsuite.xml</span>
+                    <span>C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse--483894580\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">4 methods,   4 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,6 +102,21 @@
                       <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.UserTest" class="method navigator-link" hash-for-method="login_User">login_User</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.UserTest" class="method navigator-link" hash-for-method="register_User">register_User</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.UserTest" class="method navigator-link" hash-for-method="whenAddingUser_UsernameIsBlank_validationError">whenAddingUser_UsernameIsBlank_validationError</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.UserTest" class="method navigator-link" hash-for-method="whenLoginUserInvalid_URL_RedirectsToLogin">whenLoginUserInvalid_URL_RedirectsToLogin</a> <!-- method navigator-link -->
@@ -127,6 +142,27 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
+                  <a name="login_User">
+                  </a> <!-- login_User -->
+                  <span class="method-name">login_User</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="register_User">
+                  </a> <!-- register_User -->
+                  <span class="method-name">register_User</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="whenAddingUser_UsernameIsBlank_validationError">
+                  </a> <!-- whenAddingUser_UsernameIsBlank_validationError -->
+                  <span class="method-name">whenAddingUser_UsernameIsBlank_validationError</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="whenLoginUserInvalid_URL_RedirectsToLogin">
                   </a> <!-- whenLoginUserInvalid_URL_RedirectsToLogin -->
                   <span class="method-name">whenLoginUserInvalid_URL_RedirectsToLogin</span>
@@ -137,7 +173,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse--147584844\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse--483894580\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -146,11 +182,7 @@
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.org.OhIForgotProvider.web.UserTest&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;whenLoginUserInvalid_URL_RedirectsToLogin&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.org.OhIForgotProvider.web.UserTest --&gt;
+      &lt;class name=&quot;com.org.OhIForgotProvider.web.UserTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -190,16 +222,28 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(4);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'whenLoginUserInvalid_URL_RedirectsToLogin')
+data.setCell(0, 1, 'register_User')
 data.setCell(0, 2, 'com.org.OhIForgotProvider.web.UserTest')
-data.setCell(0, 3, 793);
+data.setCell(0, 3, 2939);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'login_User')
+data.setCell(1, 2, 'com.org.OhIForgotProvider.web.UserTest')
+data.setCell(1, 3, 1118);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'whenAddingUser_UsernameIsBlank_validationError')
+data.setCell(2, 2, 'com.org.OhIForgotProvider.web.UserTest')
+data.setCell(2, 3, 909);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'whenLoginUserInvalid_URL_RedirectsToLogin')
+data.setCell(3, 2, 'com.org.OhIForgotProvider.web.UserTest')
+data.setCell(3, 3, 787);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 793 ms</span>
+              <span class="suite-total-time">Total running time: 5 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -231,12 +275,24 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
+                <span class="method-name">register_User</span>
+                <span class="method-start">5890 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">login_User</span>
+                <span class="method-start">8839 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">whenAddingUser_UsernameIsBlank_validationError</span>
+                <span class="method-start">9961 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
                 <span class="method-name">whenLoginUserInvalid_URL_RedirectsToLogin</span>
-                <span class="method-start">2418 ms</span>
+                <span class="method-start">10874 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">cleanUp</span>
-                <span class="method-start">3214 ms</span>
+                <span class="method-start">11664 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
