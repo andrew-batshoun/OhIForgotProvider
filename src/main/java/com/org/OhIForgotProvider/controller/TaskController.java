@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.org.OhIForgotProvider.model.Task;
 import com.org.OhIForgotProvider.service.TaskService;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 @RestController
 public class TaskController {
