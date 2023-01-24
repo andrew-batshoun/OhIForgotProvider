@@ -1,5 +1,7 @@
 package com.org.OhIForgotProvider.controller;
 
+import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,24 +57,25 @@ public class TaskController {
 	@PostMapping("/tasks")
 	public ResponseEntity<Task> saveTask(@RequestBody Task task) {
 
-//    	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        task.setUser(user);
+		
 		taskService.saveTask(task);
 		return new ResponseEntity<Task>(task, HttpStatus.OK);
 	}
 
 	// updates task
+	@SuppressWarnings("deprecation")
 	@PutMapping("/tasks/{id}")
 	public ResponseEntity<Task> updateTask(@PathVariable("id") long id, @RequestBody Task task) {
 		System.out.println("Updating task " + id);
 
 		Task currentTask = taskService.getTaskById(id);
-
+		
 		if (currentTask == null) {
 			System.out.println("Task with id " + id + " not found");
 			return new ResponseEntity<Task>(HttpStatus.NOT_FOUND);
 		}
-
+		
+		
 		currentTask.setDescription(task.getDescription());
 		currentTask.setDueDate(task.getDueDate());
 
