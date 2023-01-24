@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.org.OhIForgotProvider.model.User;
 import com.org.OhIForgotProvider.service.UserService;
 
-@CrossOrigin(origins ="http://localhost:8081")
+@CrossOrigin(origins ="http://localhost:4200")
 @RequestMapping("/api")
 @RestController
 public class UserController {

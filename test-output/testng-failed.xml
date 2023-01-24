@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.org.OhIForgotProvider.web.UserTest">
+      <class name="com.org.OhIForgotProvider.web.TaskTest">
         <methods>
-          <include name="cleanUp"/>
-          <include name="login_User"/>
+          <include name="delete_Task"/>
           <include name="setup"/>
+          <include name="cleanUp"/>
         </methods>
-      </class> <!-- com.org.OhIForgotProvider.web.UserTest -->
+      </class> <!-- com.org.OhIForgotProvider.web.TaskTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

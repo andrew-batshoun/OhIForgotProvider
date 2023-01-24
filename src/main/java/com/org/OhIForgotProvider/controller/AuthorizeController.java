@@ -18,7 +18,7 @@ import com.org.OhIForgotProvider.model.LoginDTO;
 import com.org.OhIForgotProvider.model.User;
 import com.org.OhIForgotProvider.respository.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/auth")
 @RestController
 public class AuthorizeController {
