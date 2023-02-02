@@ -22,27 +22,27 @@ public class User {
 	@Column(name="password", nullable = false)
 	private String password;
 
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-//	private List<Task> tasks;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private List<Task> tasks;
 
 	public User() {
 	}
 
-	public User(Long id, String email, String username, String password) {
+	public User(Long id, String email, String username, String password, List<Task> tasks) {
 		this.id = id;
 		this.email = email;
 		this.username = username;
 		this.password = password;
-//		this.tasks= tasks;
+		this.tasks= tasks;
 	}
 	
-//	public User(User copy) {
-//        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
-//        email = copy.email;
-//        username = copy.username;
-//        password = copy.password;
-//        tasks = copy.tasks;
-//    }
+	public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        tasks = copy.tasks;
+    }
 	
 
 	public Long getId() {
@@ -77,12 +77,12 @@ public class User {
 		this.password = password;
 	}
 	
-//	public List<Task> getTasks() {
-//        return tasks;
-//    }
-//
-//    public void setPosts(List<Task> tasks) {
-//        this.tasks = tasks;
-//    }
+	public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setPosts(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 
 }
