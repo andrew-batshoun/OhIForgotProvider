@@ -60,6 +60,17 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 		
 		<dependency>
 		    <groupId>org.testng</groupId>
@@ -80,12 +91,6 @@
 		<version>4.1.2</version>
 		<scope>test</scope>
 		</dependency>
-      
-	    <!--  <dependency>
-	          <groupId>org.seleniumhq.selenium</groupId>
-	          <artifactId>selenium-remote-driver</artifactId>
-	          <version> 4.1.1</version>
-	          </dependency> -->
 	         
 	     <dependency>
 		    <groupId>com.google.guava</groupId>
@@ -107,6 +112,12 @@
           <artifactId>webdrivermanager</artifactId>
           <version>5.1.0</version>
       </dependency>
+      
+      <dependency>
+    <groupId>org.modelmapper</groupId>
+<artifactId>modelmapper</artifactId>
+    <version>3.1.0</version>
+</dependency>
 
 		
 	</dependencies>

@@ -2,6 +2,7 @@ package com.org.OhIForgotProvider.service;
 
 import java.util.List;
 
+import com.org.OhIForgotProvider.dto.UserDTO;
 import com.org.OhIForgotProvider.model.User;
 
 public interface UserService {
@@ -11,4 +12,6 @@ public interface UserService {
 	public User updateUser(Long id, User user);
 	public void deleteUser(Long id);
 	public List<User> findAllUsers();
+	public boolean existsByUsername(String username);
+	public boolean existsByEmail(String email);
 }

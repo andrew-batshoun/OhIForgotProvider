@@ -1,12 +1,15 @@
 package com.org.OhIForgotProvider.controller;
 
-import java.time.LocalDate;
-import java.sql.Date;
-import java.util.List;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,87 +18,81 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.org.OhIForgotProvider.dto.TaskDTO;
 import com.org.OhIForgotProvider.model.Task;
+import com.org.OhIForgotProvider.model.User;
 import com.org.OhIForgotProvider.service.TaskService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+
+
 @RequestMapping("/api")
 @RestController
 public class TaskController {
  
 	@Autowired
 	private TaskService taskService;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
-	// list of tasks
-	@GetMapping("/tasks")
-	public ResponseEntity<List<Task>> listTasks() {
-		List<Task> tasks = taskService.listTasks();
-
-		if (tasks.isEmpty()) {
-			return new ResponseEntity<List<Task>>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
+	// list of tasks by user
+	@GetMapping(value = "/tasks", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<TaskDTO> listTasks() {
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<Task> tasks = taskService.findAllByUserId(user.getId());
+		
+		return tasks.stream()
+				.map(this::convertToDto)
+				.collect(Collectors.toList());
+	
 	}
 
 	@GetMapping("/tasks/{id}")
-	public ResponseEntity<Task> getTask(@PathVariable("id") Long id) {
+	public ResponseEntity<TaskDTO> getTask(@PathVariable("id") Long id) {
 		
-		Task getTask = taskService.getTaskById(id);
+		TaskDTO getTask = convertToDto(taskService.getTaskById(id));
 		
-		if (getTask == null) {
-			System.out.println("Task with id: " + id + " does not exist");
-			return new ResponseEntity<Task>(HttpStatus.NOT_FOUND);
-
-		}
-		
-		return new ResponseEntity<Task>(getTask, HttpStatus.OK);
+		return new ResponseEntity<>(getTask, HttpStatus.OK);
 	}
 
 	// creates task
 	@PostMapping("/tasks")
-	public ResponseEntity<Task> saveTask(@RequestBody Task task) {
-
-		
-		taskService.saveTask(task);
-		return new ResponseEntity<Task>(task, HttpStatus.OK);
+	public ResponseEntity<TaskDTO> saveTask(@RequestBody TaskDTO task) {
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Task createTask = convertToEntity(task);
+		createTask.setUser(user);
+		Task saved = taskService.saveTask(createTask);
+		return new ResponseEntity<>(convertToDto(saved), HttpStatus.OK);
 	}
 
 	// updates task
-	@SuppressWarnings("deprecation")
 	@PutMapping("/tasks/{id}")
-	public ResponseEntity<Task> updateTask(@PathVariable("id") long id, @RequestBody Task task) {
-		System.out.println("Updating task " + id);
-
-		Task currentTask = taskService.getTaskById(id);
+	public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") long id, @RequestBody TaskDTO task) {
 		
-		if (currentTask == null) {
-			System.out.println("Task with id " + id + " not found");
-			return new ResponseEntity<Task>(HttpStatus.NOT_FOUND);
-		}
-		
-		
-		currentTask.setDescription(task.getDescription());
-		currentTask.setDueDate(task.getDueDate());
-
-		taskService.updateTask(id, currentTask);
-		return new ResponseEntity<Task>(currentTask, HttpStatus.OK);
+		Task update = convertToEntity(task);
+		Task updatedTask = taskService.updateTask(id, update);
+		return new ResponseEntity<>(convertToDto(updatedTask), HttpStatus.OK);
 	}
 
 	// deletes task
 	@DeleteMapping("/tasks/{id}")
-	public ResponseEntity<Task> deleteTask(@PathVariable("id") long id) {
-		System.out.println("Retrieving & Deleting Task with id " + id);
-
-		Task task = taskService.getTaskById(id);
-		if (task == null) {
-			System.out.println("Unable to delete. Task with id " + id + " not found");
-			return new ResponseEntity<Task>(HttpStatus.NOT_FOUND);
-		}
-
+	public ResponseEntity<Void> deleteTask(@PathVariable("id") long id) {
+		
+		
 		taskService.deleteTask(id);
-		return new ResponseEntity<Task>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	private Task convertToEntity(TaskDTO taskDto) {
+		return modelMapper.map(taskDto, Task.class);
+	}
+	
+	private TaskDTO convertToDto(Task task) {
+		return modelMapper.map(task, TaskDTO.class);
 	}
 
 }
