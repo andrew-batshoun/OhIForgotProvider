@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse--297144904\testng-customsuite.xml</span>
+                    <span>C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse-1165340022\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,41 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods,   5 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content failed suite-Default_suite">
                       <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.TaskTest" class="method navigator-link" hash-for-method="create_Task">create_Task</a> <!-- method navigator-link -->
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.service.TaskServiceTest" class="method navigator-link" hash-for-method="whenSaveTask_returnTask">whenSaveTask_returnTask</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.TaskTest" class="method navigator-link" hash-for-method="delete_Task">delete_Task</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.TaskTest" class="method navigator-link" hash-for-method="editTask_NoDescription">editTask_NoDescription</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.TaskTest" class="method navigator-link" hash-for-method="edit_Task">edit_Task</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.org.OhIForgotProvider.web.TaskTest" class="method navigator-link" hash-for-method="whenAddingTask_DescriptionIsBlank_validationError">whenAddingTask_DescriptionIsBlank_validationError</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -139,53 +119,65 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.org.OhIForgotProvider.web.TaskTest</span>
+              <img src="failed.png"/>
+              <span class="class-name">com.org.OhIForgotProvider.service.TaskServiceTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="create_Task">
-                  </a> <!-- create_Task -->
-                  <span class="method-name">create_Task</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="delete_Task">
-                  </a> <!-- delete_Task -->
-                  <span class="method-name">delete_Task</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="editTask_NoDescription">
-                  </a> <!-- editTask_NoDescription -->
-                  <span class="method-name">editTask_NoDescription</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="edit_Task">
-                  </a> <!-- edit_Task -->
-                  <span class="method-name">edit_Task</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="whenAddingTask_DescriptionIsBlank_validationError">
-                  </a> <!-- whenAddingTask_DescriptionIsBlank_validationError -->
-                  <span class="method-name">whenAddingTask_DescriptionIsBlank_validationError</span>
+                  <a name="whenSaveTask_returnTask">
+                  </a> <!-- whenSaveTask_returnTask -->
+                  <span class="method-name">whenSaveTask_returnTask</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [Task(id=1, description=Get groceries, dueDate=2023-03-09, user=null)] but found [null]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+	at org.testng.Assert.assertEquals(Assert.java:122)
+	at org.testng.Assert.assertEquals(Assert.java:617)
+	at com.org.OhIForgotProvider.service.TaskServiceTest.whenSaveTask_returnTask(TaskServiceTest.java:142)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.MethodInvocationHelper$1.runTestMethod(MethodInvocationHelper.java:239)
+	at org.springframework.test.context.testng.AbstractTestNGSpringContextTests.run(AbstractTestNGSpringContextTests.java:186)
+	at org.testng.internal.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:253)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:594)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
+          </div> <!-- suite-Default_suite-class-failed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse--297144904\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\andrew.batshoun\AppData\Local\Temp\testng-eclipse-1165340022\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -194,7 +186,11 @@
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.org.OhIForgotProvider.web.TaskTest&quot;/&gt;
+      &lt;class name=&quot;com.org.OhIForgotProvider.service.TaskServiceTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;whenSaveTask_returnTask&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- com.org.OhIForgotProvider.service.TaskServiceTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -234,32 +230,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(5);
+data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'edit_Task')
-data.setCell(0, 2, 'com.org.OhIForgotProvider.web.TaskTest')
-data.setCell(0, 3, 4903);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'delete_Task')
-data.setCell(1, 2, 'com.org.OhIForgotProvider.web.TaskTest')
-data.setCell(1, 3, 3540);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'create_Task')
-data.setCell(2, 2, 'com.org.OhIForgotProvider.web.TaskTest')
-data.setCell(2, 3, 3214);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'whenAddingTask_DescriptionIsBlank_validationError')
-data.setCell(3, 2, 'com.org.OhIForgotProvider.web.TaskTest')
-data.setCell(3, 3, 540);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'editTask_NoDescription')
-data.setCell(4, 2, 'com.org.OhIForgotProvider.web.TaskTest')
-data.setCell(4, 3, 433);
+data.setCell(0, 1, 'whenSaveTask_returnTask')
+data.setCell(0, 2, 'com.org.OhIForgotProvider.service.TaskServiceTest')
+data.setCell(0, 3, 26);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 12 seconds</span>
+              <span class="suite-total-time">Total running time: 26 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -274,9 +254,30 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">8 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">com.org.OhIForgotProvider.service.TaskServiceTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">whenRetrievingList_ShowsNoTask</span>
+                <br/>
+                <span class="ignored-method-name">whenUpdating_DescriptionIsBlank_ReturnsNull</span>
+                <br/>
+                <span class="ignored-method-name">whenGivenId_DeleteTask</span>
+                <br/>
+                <span class="ignored-method-name">whenUpdatingTask_ReturnsUpdatedTask</span>
+                <br/>
+                <span class="ignored-method-name">descriptionEmpty_CannotSaveTask</span>
+                <br/>
+                <span class="ignored-method-name">whenListIsCalled_ShowsListOfTasks</span>
+                <br/>
+                <span class="ignored-method-name">whenGivenId_returnsTask</span>
+                <br/>
+                <span class="ignored-method-name">whenGivenId_ReturnsNull</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Default_suite" class="panel">
@@ -285,35 +286,37 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.org.OhIForgotProvider.web.TaskTest</div> <!-- chronological-class-name -->
-              <div class="configuration-test before">
-                <span class="method-name">setup</span>
+              <div class="chronological-class-name">com.org.OhIForgotProvider.service.TaskServiceTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextBeforeTestClass</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-test before -->
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">springTestContextPrepareTestInstance</span>
+                <span class="method-start">7 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">springTestContextBeforeTestMethod(public void com.org.OhIForgotProvider.service.TaskServiceTest.whenSaveTask_returnTask())</span>
+                <span class="method-start">196 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">init</span>
+                <span class="method-start">199 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">create_Task</span>
-                <span class="method-start">3913 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">whenSaveTask_returnTask</span>
+                <span class="method-start">703 ms</span>
               </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">edit_Task</span>
-                <span class="method-start">7131 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">editTask_NoDescription</span>
-                <span class="method-start">12035 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">delete_Task</span>
-                <span class="method-start">12470 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">whenAddingTask_DescriptionIsBlank_validationError</span>
-                <span class="method-start">16013 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-test after">
-                <span class="method-name">cleanUp</span>
-                <span class="method-start">16554 ms</span>
-              </div> <!-- configuration-test after -->
+              <div class="configuration-method after">
+                <span class="method-name">springTestContextAfterTestMethod(public void com.org.OhIForgotProvider.service.TaskServiceTest.whenSaveTask_returnTask())</span>
+                <span class="method-start">732 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">springTestContextAfterTestClass</span>
+                <span class="method-start">735 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

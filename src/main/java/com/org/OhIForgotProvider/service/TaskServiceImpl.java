@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.org.OhIForgotProvider.exceptions.NotFoundException;
 import com.org.OhIForgotProvider.model.Task;
-import com.org.OhIForgotProvider.model.User;
 import com.org.OhIForgotProvider.respository.TaskRepository;
 
 @Service

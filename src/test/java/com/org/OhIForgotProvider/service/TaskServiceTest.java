@@ -46,14 +46,14 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 	public void whenListIsCalled_ShowsListOfTasks() {
 		Task task1 = new Task();
 		task1.setDescription("Get groceries");
-		task1.setDueDate(Date.valueOf(LocalDate.now()));
+		task1.setDueDate(LocalDate.now());
 		
 		Task task2 = new Task();
 		task2.setDescription("Go for run");
 		
 		Task task3 = new Task();
 		task3.setDescription("study for exam");
-		task3.setDueDate(Date.valueOf(LocalDate.of(2022, 12, 23)));
+		task3.setDueDate(LocalDate.of(2022, 12, 23));
 		
 		List<Task> tasks = new ArrayList<>();
 		tasks.add(task1);
@@ -88,7 +88,7 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 		Task task1 = new Task();
 		task1.setId(1L);
 		task1.setDescription("Get groceries");
-		task1.setDueDate(Date.valueOf(LocalDate.now()));
+		task1.setDueDate(LocalDate.now());
 		
 		Task task2 = new Task();
 		task2.setId(2L);
@@ -97,7 +97,7 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 		Task task3 = new Task();
 		task3.setId(3L);
 		task3.setDescription("study for exam");
-		task3.setDueDate(Date.valueOf(LocalDate.of(2022, 12, 23)));
+		task3.setDueDate(LocalDate.of(2022, 12, 23));
 		
 		
 		when(mockDao.getById(2L)).thenReturn(task2);
@@ -114,7 +114,7 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 		Task task1 = new Task();
 		task1.setId(1L);
 		task1.setDescription("Get groceries");
-		task1.setDueDate(Date.valueOf(LocalDate.now()));
+		task1.setDueDate(LocalDate.now());
 		
 		Task task2 = new Task();
 		task2.setId(2L);
@@ -133,13 +133,13 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 		Task task1 = new Task();
 		task1.setId(1L);
 		task1.setDescription("Get groceries");
-		task1.setDueDate(Date.valueOf(LocalDate.now()));
+		task1.setDueDate(LocalDate.now());
 		
 		when(mockDao.save(Mockito.any())).thenReturn(task1);
 		
 		Task savedTask = taskService.saveTask(task1);
 		
-		assertEquals(savedTask, task1);
+		assertEquals(savedTask, task1); 
 		
 		verify(mockDao).save(task1);
 	}
@@ -148,7 +148,7 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 	public void descriptionEmpty_CannotSaveTask() {
 		Task task1 = new Task();
 		task1.setId(1L);
-		task1.setDueDate(Date.valueOf(LocalDate.now()));
+		task1.setDueDate(LocalDate.now());
 		
 		when(mockDao.save(Mockito.any())).thenThrow(new NullPointerException());
 		
@@ -162,12 +162,12 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 		Task task = new Task();
 		task.setId(1L);
 		task.setDescription("Get groceries");
-		task.setDueDate(Date.valueOf(LocalDate.now()));
+		task.setDueDate(LocalDate.now());
 		
 		Task updatedTask = new Task();
 		updatedTask.setId(1L);
 		updatedTask.setDescription("Get groceries and pick up clothes.");
-		updatedTask.setDueDate(Date.valueOf(LocalDate.of(2023, 01, 02)));
+		updatedTask.setDueDate(LocalDate.of(2023, 01, 02));
 		
 		when(mockDao.save(Mockito.any())).thenReturn(task, updatedTask);
 		when(mockDao.getById(Mockito.anyLong())).thenReturn(task);
@@ -189,12 +189,12 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 		Task task = new Task();
 		task.setId(1L);
 		task.setDescription("Get groceries");
-		task.setDueDate(Date.valueOf(LocalDate.now()));
+		task.setDueDate(LocalDate.now());
 		
 		Task updatedTask = new Task();
 		updatedTask.setId(1L);
 		updatedTask.setDescription("");
-		updatedTask.setDueDate(Date.valueOf(LocalDate.of(2023, 01, 02)));
+		updatedTask.setDueDate(LocalDate.of(2023, 01, 02));
 		
 		when(mockDao.save(Mockito.any())).thenThrow(new NullPointerException());
 		when(mockDao.getById(Mockito.anyLong())).thenReturn(task);
@@ -214,7 +214,7 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 		Task task = new Task();
 		task.setId(1L);
 		task.setDescription("Get groceries");
-		task.setDueDate(Date.valueOf(LocalDate.now()));
+		task.setDueDate(LocalDate.now());
 		
 		taskService.saveTask(task);
 		

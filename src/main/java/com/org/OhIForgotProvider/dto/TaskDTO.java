@@ -1,5 +1,6 @@
 package com.org.OhIForgotProvider.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -27,7 +28,7 @@ public class TaskDTO {
 
 	private String description;
 
-	private Date dueDate;
+	private LocalDate dueDate;
 
 	private User user;
 

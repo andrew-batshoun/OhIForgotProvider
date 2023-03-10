@@ -1,41 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="8" total="9" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-01-24T10:42:38 CST" name="Default suite" finished-at="2023-01-24T10:42:54 CST" duration-ms="16837">
+  <suite started-at="2023-03-09T13:54:38 CST" name="Default suite" finished-at="2023-03-09T13:54:39 CST" duration-ms="753">
     <groups>
     </groups>
-    <test started-at="2023-01-24T10:42:38 CST" name="Default test" finished-at="2023-01-24T10:42:54 CST" duration-ms="16837">
-      <class name="com.org.OhIForgotProvider.web.TaskTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.org.OhIForgotProvider.web.TaskTest@1ca3b418]" started-at="2023-01-24T10:42:38 CST" name="setup" finished-at="2023-01-24T10:42:41 CST" duration-ms="3877" status="PASS">
+    <test started-at="2023-03-09T13:54:38 CST" name="Default test" finished-at="2023-03-09T13:54:39 CST" duration-ms="753">
+      <class name="com.org.OhIForgotProvider.service.TaskServiceTest">
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:com.org.OhIForgotProvider.service.TaskServiceTest@28ec166e]" started-at="2023-03-09T13:54:38 CST" name="springTestContextBeforeTestClass" finished-at="2023-03-09T13:54:38 CST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="create_Task()[pri:1, instance:com.org.OhIForgotProvider.web.TaskTest@1ca3b418]" started-at="2023-01-24T10:42:41 CST" name="create_Task" finished-at="2023-01-24T10:42:45 CST" duration-ms="3214" status="PASS">
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.org.OhIForgotProvider.service.TaskServiceTest@28ec166e]" started-at="2023-03-09T13:54:38 CST" name="springTestContextPrepareTestInstance" finished-at="2023-03-09T13:54:38 CST" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="180" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- create_Task -->
-        <test-method signature="edit_Task()[pri:2, instance:com.org.OhIForgotProvider.web.TaskTest@1ca3b418]" started-at="2023-01-24T10:42:45 CST" name="edit_Task" finished-at="2023-01-24T10:42:50 CST" duration-ms="4903" status="PASS">
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.org.OhIForgotProvider.service.TaskServiceTest@28ec166e]" started-at="2023-03-09T13:54:38 CST" name="springTestContextBeforeTestMethod" finished-at="2023-03-09T13:54:38 CST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.org.OhIForgotProvider.service.TaskServiceTest.whenSaveTask_returnTask()]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- edit_Task -->
-        <test-method signature="editTask_NoDescription()[pri:3, instance:com.org.OhIForgotProvider.web.TaskTest@1ca3b418]" started-at="2023-01-24T10:42:50 CST" name="editTask_NoDescription" finished-at="2023-01-24T10:42:50 CST" duration-ms="433" status="PASS">
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method is-config="true" signature="init()[pri:0, instance:com.org.OhIForgotProvider.service.TaskServiceTest@28ec166e]" started-at="2023-03-09T13:54:38 CST" name="init" finished-at="2023-03-09T13:54:38 CST" duration-ms="503" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- editTask_NoDescription -->
-        <test-method signature="delete_Task()[pri:4, instance:com.org.OhIForgotProvider.web.TaskTest@1ca3b418]" started-at="2023-01-24T10:42:50 CST" name="delete_Task" finished-at="2023-01-24T10:42:54 CST" duration-ms="3540" status="PASS">
+        </test-method> <!-- init -->
+        <test-method signature="whenSaveTask_returnTask()[pri:0, instance:com.org.OhIForgotProvider.service.TaskServiceTest@28ec166e]" started-at="2023-03-09T13:54:38 CST" name="whenSaveTask_returnTask" finished-at="2023-03-09T13:54:39 CST" duration-ms="26" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Task(id=1, description=Get groceries, dueDate=2023-03-09, user=null)] but found [null]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Task(id=1, description=Get groceries, dueDate=2023-03-09, user=null)] but found [null]
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:617)
+at com.org.OhIForgotProvider.service.TaskServiceTest.whenSaveTask_returnTask(TaskServiceTest.java:142)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper$1.runTestMethod(MethodInvocationHelper.java:239)
+at org.springframework.test.context.testng.AbstractTestNGSpringContextTests.run(AbstractTestNGSpringContextTests.java:186)
+at org.testng.internal.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:253)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:594)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- delete_Task -->
-        <test-method signature="whenAddingTask_DescriptionIsBlank_validationError()[pri:5, instance:com.org.OhIForgotProvider.web.TaskTest@1ca3b418]" started-at="2023-01-24T10:42:54 CST" name="whenAddingTask_DescriptionIsBlank_validationError" finished-at="2023-01-24T10:42:54 CST" duration-ms="540" status="PASS">
+        </test-method> <!-- whenSaveTask_returnTask -->
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.org.OhIForgotProvider.service.TaskServiceTest@28ec166e]" started-at="2023-03-09T13:54:39 CST" name="springTestContextAfterTestMethod" finished-at="2023-03-09T13:54:39 CST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.org.OhIForgotProvider.service.TaskServiceTest.whenSaveTask_returnTask()]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- whenAddingTask_DescriptionIsBlank_validationError -->
-        <test-method is-config="true" signature="cleanUp()[pri:0, instance:com.org.OhIForgotProvider.web.TaskTest@1ca3b418]" started-at="2023-01-24T10:42:54 CST" name="cleanUp" finished-at="2023-01-24T10:42:54 CST" duration-ms="279" status="PASS">
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:com.org.OhIForgotProvider.service.TaskServiceTest@28ec166e]" started-at="2023-03-09T13:54:39 CST" name="springTestContextAfterTestClass" finished-at="2023-03-09T13:54:39 CST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- cleanUp -->
-      </class> <!-- com.org.OhIForgotProvider.web.TaskTest -->
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- com.org.OhIForgotProvider.service.TaskServiceTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
