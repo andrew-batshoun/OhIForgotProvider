@@ -71,7 +71,7 @@ public class TaskServiceTest extends AbstractTestNGSpringContextTests{
 	}
 	
 	@Test 
-	public void whenRetrievingList_ShowsNoTask() {
+	public void whenRetrievingListShowsNoTask() {
 		List<Task> emptyTasks = new ArrayList<>();
 		
 		when(mockDao.findAll()).thenReturn(emptyTasks);
